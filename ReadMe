@@ -1,0 +1,18 @@
+Goal: from raw dataset of car information and sales prices, identify features that are most important to sales price and report back to a used car dealership
+
+Process:
+1. Data Exploration, Cleaning: I removed columns that didn't have good data. I also aggregated or transformed columns; for example, from the manufacturer column I decided to aggregate that into groups based on the country that the manufacturer is based (to test the hypothesis that Japanese cars like Toyota generally sell well in the used car market).
+2. Data Transformation: OneHotEncoding of every categorical feature. Only numeric features were Year and Odometer, which were scaled with StandardScaler()
+3. Regressions: Simple linear regression; Ridge regression with GridSearchCV to identify best alpha; Linear regression with Sequential Feature Selection.
+4. Model Selection: Best model was Ridge with alpha = 316
+
+Conclusions:
+Feel free to use this data, but really you need to figure out the relationship between the price YOU can acquire the car at and what you can sell it for, and how long it takes to sell. Are you capital constrained? Are you constrained by lot space? What types of cars are most popular in your specific area?
+
+Keeping all that in mind, here are some items to be aware of.
+- This data confirms the expected hypothesis that newer cars (as indicated by Year) and cars with fewer miles (odometer) will sell at higher prices
+- All other things equal, diesel outsells gas. Pickups and trucks outsell sedans.
+- Within the large/utility category, Trucks correlated with higher prices, SUVs with lower prices
+- Within the large/family category, Vans had a large positive coefficient (correlated with higher prices); wagons, and Korean-made car brands, had notably large negative coeffs.
+- Within small cars, coupes sell well while hatchbacks do not
+- Generally, FWD had large negative coeffs
